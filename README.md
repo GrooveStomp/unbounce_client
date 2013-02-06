@@ -34,7 +34,7 @@ ub = UnbounceClient.new(MY_API_KEY)
 Get your Accounts list:
 
 ```Ruby
-accounts = b.accounts
+accounts = ub.accounts
 ```
 
 Get your Sub Accounts:
