@@ -9,8 +9,8 @@ Gem::Specification.new do |gem|
   gem.version       = UnbounceClientUtils::VERSION
   gem.authors       = ['Aaron Oman']
   gem.email         = ['aaron@unbounce.com']
-  gem.description   = %q{Convenient recursive methods to extend Ruby's built-in Hash.}
-  gem.summary       = %q{Destructive and non-destructive recursive methods to augment the build in Hash.}
+  gem.description   = %q{Light wrapper around the Unbounce API.}
+  gem.summary       = %q{Ruby bindings around the Unbounce API. 100% a work in progress, but fully useable.}
   gem.homepage      = 'https://github.com/GrooveStomp/unbounce_client'
 
   gem.files         = `git ls-files`.split($/)
