@@ -17,43 +17,43 @@ class UnbounceClient
   end
 
   def accounts
-    parse get('/accounts')
+    parse( get('/accounts') )['accounts'].collect { |account| OpenStruct.new(account) }
   end
 
   def sub_accounts(account_id)
-    parse get("/accounts/#{account_id}/sub_accounts")
+    parse( get("/accounts/#{account_id}/sub_accounts") )['subAccounts'].collect { |sub_account| OpenStruct.new(sub_account) }
   end
 
   def sub_account(id)
-    parse get("/sub_accounts/#{id}")
+    OpenStruct.new( parse( get("/sub_accounts/#{id}") ) )
   end
 
   def domains(id)
-    parse get("/sub_accounts/#{id}/domains")
+    parse( get("/sub_accounts/#{id}/domains") )['domains'].collect { |domain| OpenStruct.new(domain) }
   end
 
   def page_groups(sub_account_id)
-    parse get("/sub_accounts/#{sub_account_id}/page_groups")
+    parse( get("/sub_accounts/#{sub_account_id}/page_groups") )['pageGroups'].collect { |page_group| OpenStruct.new(page_group) }
   end
 
   def pages(opts={ account_id: nil, sub_account_id: nil, page_group_id: nil })
     parent, id = opts_to_path_and_id(opts)
 
-    parse get("/#{parent}/#{id}/pages")
+    parse( get("/#{parent}/#{id}/pages") )['pages'].collect { |page| OpenStruct.new(page) }
   end
 
   def page(id)
-    parse get("/pages/#{id}")
+    OpenStruct.new( parse( get("/pages/#{id}") ) )
   end
 
   def leads(opts={ sub_account_id: nil, page_id: nil })
     parent, id = opts_to_path_and_id(opts)
 
-    parse get("/#{parent}/#{id}/leads")
+    parse( get("/#{parent}/#{id}/leads") )['leads'].collect { |lead| OpenStruct.new(lead) }
   end
 
   def lead(id)
-    parse get("/leads/#{id}")
+    OpenStruct.new( parse( get("/leads/#{id}") ) )
   end
 
   private
