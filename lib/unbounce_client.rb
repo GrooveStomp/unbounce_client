@@ -8,8 +8,8 @@ class Unbounce
 
   @format
 
-  def initialize(username)
-    @auth = { username: username, password: '' }
+  def initialize(api_key)
+    @auth = { username: api_key, password: '' }
   end
 
   def root
