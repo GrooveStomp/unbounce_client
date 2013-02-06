@@ -47,6 +47,18 @@ sub_accounts = ub.sub_accounts(accounts.first.id)
 sub_account = ub.sub_account(sub_accounts.first.id)
 ```
 
+Get your Page Groups:
+
+```Ruby
+page_groups = ub.page_groups(sub_account.id)
+```
+
+Get your Domains:
+
+```Ruby
+domains = ub.domains(sub_account.id)
+```
+
 Get your Pages:
 
 ```Ruby
