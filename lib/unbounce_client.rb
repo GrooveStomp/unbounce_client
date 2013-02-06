@@ -1,7 +1,7 @@
 require 'httparty'
 require 'json'
 
-class Unbounce
+class UnbounceClient
   include HTTParty
   base_uri 'https://api.unbounce.com'
   headers('Accept' => 'application/vnd.unbounce.api.v0.1+json')

@@ -1,4 +1,4 @@
-require 'spec_heper'
+require 'spec_helper'
 
 describe UnbounceClient do
 
