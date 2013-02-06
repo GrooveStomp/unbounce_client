@@ -1,6 +1,6 @@
 # UnbounceClient
 
-This is a Ruby wrapper around the [Unbounce API](https://api.unbounce.com).
+This is a Ruby wrapper around the [Unbounce API](https://api.unbounce.com). [API Reference documentation is here.](https://api.unbounce.com/doc)
 
 ##Installation
 Add this line to your project's Gemfile:
@@ -23,7 +23,7 @@ $ gem install unbounce_client
 
 ##Usage
 
-- First, make sure you have an Unbounce API Key.
+**First, make sure you have an Unbounce API Key.**
 
 Create a new instance:
 
