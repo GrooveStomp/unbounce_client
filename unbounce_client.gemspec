@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['aaron@unbounce.com']
   gem.description   = %q{Convenient recursive methods to extend Ruby's built-in Hash.}
   gem.summary       = %q{Destructive and non-destructive recursive methods to augment the build in Hash.}
-  gem.homepage      = ''
+  gem.homepage      = 'https://github.com/GrooveStomp/unbounce_client'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
