@@ -83,6 +83,9 @@ leads = ub.leads(page_id: page.id)
 
 # Get a specific Lead:
 lead = ub.lead(leads.first.id)
+
+# Create Lead:
+lead = ub.create_lead(page_id: page.id, form_submission: { form_data: { first_name: "Test", email: "test@email.com" }, variant_id: "a" })
 ```
 
 ##Contributing

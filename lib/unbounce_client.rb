@@ -65,6 +65,10 @@ class UnbounceClient
     OpenStruct.new( parse( get("/leads/#{id}") ) )
   end
 
+  def create_lead(opts={ page_id: nil, form_submission: nil, variant_id: nil })
+    OpenStruct.new( parse( post("/pages/#{opts.delete(:page_id)}/leads", opts) ) )
+  end
+
   private
 
     def opts_to_path_and_id(opts)
@@ -80,6 +84,10 @@ class UnbounceClient
 
     def get(url)
       self.class.get(url, basic_auth: @auth, headers: @headers)
+    end
+
+    def post(url, params)
+      self.class.post(url, basic_auth: @auth, headers: @headers, body: params)
     end
 
     def parse(response)
