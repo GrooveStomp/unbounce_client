@@ -1,6 +1,8 @@
 # UnbounceClient
 
-This is a Ruby wrapper around the [Unbounce API](https://api.unbounce.com).
+This is a completely unofficial, partially supported Ruby wrapper around the [Unbounce API](https://api.unbounce.com).  
+I'm monitoring for pull requests, but this is entirely outside the blessing of Unbounce proper.  
+That said, I hope this makes your life easier.  Enjoy!
 
 ##Installation
 Add this line to your project's Gemfile:
