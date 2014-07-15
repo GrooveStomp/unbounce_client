@@ -8,8 +8,17 @@ class UnbounceClient
 
   @format
 
-  def initialize(api_key)
-    @auth = { username: api_key, password: '' }
+  def initialize(options)
+    api_key = options.delete(:api_key)
+    oauth_token = options.delete(:oauth_token)
+
+    if api_key
+      @auth = { username: api_key, password: '' }
+    elsif oauth_token
+      @headers = { 'Authorization' => "Bearer #{oauth_token}" }
+    else
+      raise ArgumentError, 'Use :api_key or :oauth_token argument'
+    end
   end
 
   def root
@@ -70,7 +79,7 @@ class UnbounceClient
     end
 
     def get(url)
-      self.class.get(url, basic_auth: @auth)
+      self.class.get(url, basic_auth: @auth, headers: @headers)
     end
 
     def parse(response)
