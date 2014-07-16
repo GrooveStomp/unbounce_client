@@ -8,8 +8,17 @@ class UnbounceClient
 
   @format
 
-  def initialize(api_key)
-    @auth = { username: api_key, password: '' }
+  def initialize(options)
+    api_key = options.delete(:api_key)
+    oauth_token = options.delete(:oauth_token)
+
+    if api_key
+      @auth = { username: api_key, password: '' }
+    elsif oauth_token
+      @headers = { 'Authorization' => "Bearer #{oauth_token}" }
+    else
+      raise ArgumentError, 'Use :api_key or :oauth_token argument'
+    end
   end
 
   def root
@@ -56,6 +65,10 @@ class UnbounceClient
     OpenStruct.new( parse( get("/leads/#{id}") ) )
   end
 
+  def create_lead(opts={ page_id: nil, form_submission: nil, variant_id: nil })
+    OpenStruct.new( parse( post("/pages/#{opts.delete(:page_id)}/leads", opts) ) )
+  end
+
   private
 
     def opts_to_path_and_id(opts)
@@ -70,7 +83,11 @@ class UnbounceClient
     end
 
     def get(url)
-      self.class.get(url, basic_auth: @auth)
+      self.class.get(url, basic_auth: @auth, headers: @headers)
+    end
+
+    def post(url, params)
+      self.class.post(url, basic_auth: @auth, headers: @headers, body: params)
     end
 
     def parse(response)

@@ -30,7 +30,11 @@ $ gem install unbounce_client
 Create a new instance:
 
 ```Ruby
-ub = UnbounceClient.new(MY_API_KEY)
+ub = UnbounceClient.new(api_key: MY_API_KEY)
+
+# or
+
+ub = UnbounceClient.new(oauth_token: MY_OAUTH_TOKEN)
 ```
 
 Get your Accounts list:
@@ -79,6 +83,9 @@ leads = ub.leads(page_id: page.id)
 
 # Get a specific Lead:
 lead = ub.lead(leads.first.id)
+
+# Create Lead:
+lead = ub.create_lead(page_id: page.id, form_submission: { form_data: { first_name: "Test", email: "test@email.com" }, variant_id: "a" })
 ```
 
 ##Contributing
