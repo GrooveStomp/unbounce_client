@@ -79,7 +79,7 @@ Get your Leads:
 
 ```Ruby
 # Get a list of Leads:
-leads = ub.leads(page_id: page.id)
+leads = ub.leads(page_id: page.id, limit: 50, offset: 10, sort_order: "desc")
 
 # Get a specific Lead:
 lead = ub.lead(leads.first.id)
