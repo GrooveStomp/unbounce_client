@@ -57,8 +57,9 @@ class UnbounceClient
 
   def leads(opts={ sub_account_id: nil, page_id: nil })
     parent, id = opts_to_path_and_id(opts)
+    query = opts.except(:sub_account_id, :page_id)
 
-    parse( get("/#{parent}/#{id}/leads") )['leads'].collect { |lead| OpenStruct.new(lead) }
+    parse( get("/#{parent}/#{id}/leads", query) )['leads'].collect { |lead| OpenStruct.new(lead) }
   end
 
   def lead(id)
@@ -82,8 +83,8 @@ class UnbounceClient
       ["#{parent}s", id]
     end
 
-    def get(url)
-      self.class.get(url, basic_auth: @auth, headers: @headers)
+    def get(url, query = {})
+      self.class.get(url, basic_auth: @auth, headers: @headers, query: query)
     end
 
     def post(url, params)
